@@ -1,8 +1,17 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 /**
@@ -27,9 +36,11 @@ public class Property implements Serializable {
 	private String city;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") 
 	private Date createDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
 	private Date lastUpdateDate;
 
 	private String notes;

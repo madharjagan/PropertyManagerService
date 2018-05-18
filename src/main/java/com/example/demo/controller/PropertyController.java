@@ -31,41 +31,8 @@ public class PropertyController {
 		return objGson.toJson(listOfProperty);
 	}
 	
-	/*@PostMapping(value = "/addProperty")
-	public int addProperty(@RequestParam(value = "Address", required = true) String address, 
-						   @RequestParam(value = "city", required = true) String city,
-						   @RequestParam(value = "stateID", required = true) String stateID,
-						   @RequestParam(value = "zipCode", required = true) String zipCode,
-						   @RequestParam(value = "bedroomCount", required = true) int bedroomCount,
-						   @RequestParam(value = "bathroomCount", required = true) int bathroomCount,
-						   @RequestParam(value = "createDate", required = true) Date createDate,
-						   @RequestParam(value = "lastUpdateDate", required = true) Date lastUpdateDate,
-						   @RequestParam(value = "notes", required = true) String notes,
-						   @RequestParam(value = "sqFootage", required = true) int sqFootage
-						   ) {
-		
-		
-		Property property = new Property();
-		property.setAddress(address);
-		property.setCity(city);
-		property.setStateID(stateID);
-		property.setZipCode(zipCode);
-		property.setBedroomCount(bedroomCount);
-		property.setBathroomCount(bathroomCount);
-		property.setCreateDate(createDate);
-		property.setLastUpdateDate(lastUpdateDate);
-		property.setNotes(notes);
-		property.setSqFootage(sqFootage);
-		
-		propertyDao.save(property);
-	
-		return 0;
-	}*/
-	
-	
 	@PostMapping(value = "/addProperty")
-	public Property addProperty(@RequestBody Property property) {	
-		System.out.print("property.getAddress() ################################" + property.getCreateDate());
+	public Property addProperty(@RequestBody Property property) {
 		return propertyDao.save(property);
 	}
 	
