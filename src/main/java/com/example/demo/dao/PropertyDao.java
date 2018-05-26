@@ -14,8 +14,12 @@ public class PropertyDao {
 	@Autowired
 	PropertyRepo propertyRepo;
 	
-	public List<Property> findByPropertyID(int clientID) {
+	public Property findByPropertyID(int clientID) {
 		return propertyRepo.findByPropertyID(clientID);		
+	}
+	
+	public List<Property> findAll() {
+		return propertyRepo.findAll();		
 	}
 
 	public Property save(Property property) {

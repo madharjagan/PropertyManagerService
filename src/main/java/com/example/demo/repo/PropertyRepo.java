@@ -8,6 +8,7 @@ import com.example.demo.model.Property;
 
 public interface PropertyRepo extends JpaRepository<Property, Integer> {
 
-	List<Property> findByPropertyID(int clientID);
+	Property findByPropertyID(int clientID);
+	List<Property> findAll();
 
 }

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.example.demo.model.Property;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class PropertyController {
 	
@@ -22,10 +24,18 @@ public class PropertyController {
 	
 	@GetMapping(value = "/getPropertyDetails/{propertyID}", produces = "application/json")
 	public String getPropertyDetails(@PathVariable(value = "propertyID", required = true) int propertyID) {
-		List<Property> listOfProperty = propertyDao.findByPropertyID(propertyID);
+		Property property = propertyDao.findByPropertyID(propertyID);
+		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		return objGson.toJson(property);
+	}
+	
+	@GetMapping(value = "/getPropertyDetails", produces = "application/json")
+	public String getAllPropertyDetails() {
+		List<Property> listOfProperty = propertyDao.findAll();
 		
 		for(Property property: listOfProperty) {
-		System.out.println(property.getAddress());
+			System.out.println("GETGETGETGET"+property.getStreet_number());
+			System.out.println("GETGETGETGET"+property.getRoute());
 		}
 		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
 		return objGson.toJson(listOfProperty);
@@ -33,6 +43,9 @@ public class PropertyController {
 	
 	@PostMapping(value = "/addProperty")
 	public Property addProperty(@RequestBody Property property) {
+		System.out.println("*********************"+property.getStreet_number());
+		System.out.println("*********************"+property.getRoute());
+		System.out.println("*********************"+property.getBathroomCount());
 		return propertyDao.save(property);
 	}
 	

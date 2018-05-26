@@ -21,19 +21,27 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @NamedQuery(name="Property.findAll", query="SELECT p FROM Property p")
 public class Property implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int propertyID;
 
-	private String address;
-
-	private int bathroomCount;
-
+	private String street_number;
+	private String route;
+	private String locality;
+	private String administrative_area_level_1;
+	private String country;
+	private String postal_code;
+	
+	private String propertytype;
+	private int lotsize;
+	private int sqfootage;
+	private int yearbuilt;
 	private int bedroomCount;
-
-	private String city;
+	private int bathroomCount;
+	private String description;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") 
@@ -43,59 +51,123 @@ public class Property implements Serializable {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
 	private Date lastUpdateDate;
 
-	private String notes;
-
-	private int sqFootage;
-
-	private String stateID;
-
-	private String zipCode;
-
 	public Property() {
 	}
 
 	public int getPropertyID() {
-		return this.propertyID;
+		return propertyID;
 	}
 
 	public void setPropertyID(int propertyID) {
 		this.propertyID = propertyID;
 	}
 
-	public String getAddress() {
-		return this.address;
+	public String getStreet_number() {
+		return street_number;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStreet_number(String street_number) {
+		this.street_number = street_number;
 	}
 
-	public int getBathroomCount() {
-		return this.bathroomCount;
+	public String getRoute() {
+		return route;
 	}
 
-	public void setBathroomCount(int bathroomCount) {
-		this.bathroomCount = bathroomCount;
+	public void setRoute(String route) {
+		this.route = route;
+	}
+
+	public String getLocality() {
+		return locality;
+	}
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}
+
+	public String getAdministrative_area_level_1() {
+		return administrative_area_level_1;
+	}
+
+	public void setAdministrative_area_level_1(String administrative_area_level_1) {
+		this.administrative_area_level_1 = administrative_area_level_1;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	public String getPostal_code() {
+		return postal_code;
+	}
+
+	public void setPostal_code(String postal_code) {
+		this.postal_code = postal_code;
+	}
+
+	public String getPropertytype() {
+		return propertytype;
+	}
+
+	public void setPropertytype(String propertytype) {
+		this.propertytype = propertytype;
+	}
+
+	public int getLotsize() {
+		return lotsize;
+	}
+
+	public void setLotsize(int lotsize) {
+		this.lotsize = lotsize;
+	}
+
+	public int getSqfootage() {
+		return sqfootage;
+	}
+
+	public void setSqfootage(int sqfootage) {
+		this.sqfootage = sqfootage;
+	}
+
+	public int getYearbuilt() {
+		return yearbuilt;
+	}
+
+	public void setYearbuilt(int yearbuilt) {
+		this.yearbuilt = yearbuilt;
 	}
 
 	public int getBedroomCount() {
-		return this.bedroomCount;
+		return bedroomCount;
 	}
 
 	public void setBedroomCount(int bedroomCount) {
 		this.bedroomCount = bedroomCount;
 	}
 
-	public String getCity() {
-		return this.city;
+	public int getBathroomCount() {
+		return bathroomCount;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setBathroomCount(int bathroomCount) {
+		this.bathroomCount = bathroomCount;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getCreateDate() {
-		return this.createDate;
+		return createDate;
 	}
 
 	public void setCreateDate(Date createDate) {
@@ -103,43 +175,15 @@ public class Property implements Serializable {
 	}
 
 	public Date getLastUpdateDate() {
-		return this.lastUpdateDate;
+		return lastUpdateDate;
 	}
 
 	public void setLastUpdateDate(Date lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
-	public String getNotes() {
-		return this.notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public int getSqFootage() {
-		return this.sqFootage;
-	}
-
-	public void setSqFootage(int sqFootage) {
-		this.sqFootage = sqFootage;
-	}
-
-	public String getStateID() {
-		return this.stateID;
-	}
-
-	public void setStateID(String stateID) {
-		this.stateID = stateID;
-	}
-
-	public String getZipCode() {
-		return this.zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
