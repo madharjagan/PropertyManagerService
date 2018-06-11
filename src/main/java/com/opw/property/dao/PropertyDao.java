@@ -1,12 +1,12 @@
-package com.example.demo.dao;
+package com.opw.property.dao;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.Property;
-import com.example.demo.repo.PropertyRepo;
+import com.opw.property.model.Property;
+import com.opw.property.repo.PropertyRepo;
 
 @Repository
 public class PropertyDao {

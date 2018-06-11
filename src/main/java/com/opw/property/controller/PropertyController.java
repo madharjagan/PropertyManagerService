@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.opw.property.controller;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dao.PropertyDao;
-import com.example.demo.model.Property;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.opw.property.dao.PropertyDao;
+import com.opw.property.model.Property;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -49,5 +49,9 @@ public class PropertyController {
 		return propertyDao.save(property);
 	}
 	
+	/*@DeleteMapping("/removeProperty/{propertyID}")
+	public void deleteStudent(@PathVariable(value = "propertyID", required = true) int propertyID) {
+		studentRepository.deleteById(id);
+	}*/
 
 }

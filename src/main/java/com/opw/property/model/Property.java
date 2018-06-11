@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.opw.property.model;
 
 import java.io.Serializable;
 import java.util.Date;
