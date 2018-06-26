@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.opw.property.dao.PropertyDao;
 import com.opw.property.model.Property;
 
@@ -23,22 +21,22 @@ public class PropertyController {
 	PropertyDao propertyDao;
 	
 	@GetMapping(value = "/getPropertyDetails/{propertyID}", produces = "application/json")
-	public String getPropertyDetails(@PathVariable(value = "propertyID", required = true) int propertyID) {
+	public Property getPropertyDetails(@PathVariable(value = "propertyID", required = true) int propertyID) {
 		Property property = propertyDao.findByPropertyID(propertyID);
-		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
-		return objGson.toJson(property);
+		//Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		return property;
 	}
 	
 	@GetMapping(value = "/getPropertyDetails", produces = "application/json")
-	public String getAllPropertyDetails() {
+	public List<Property> getAllPropertyDetails() {
 		List<Property> listOfProperty = propertyDao.findAll();
 		
 		for(Property property: listOfProperty) {
 			System.out.println("GETGETGETGET"+property.getStreet_number());
 			System.out.println("GETGETGETGET"+property.getRoute());
 		}
-		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
-		return objGson.toJson(listOfProperty);
+	//	Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		return listOfProperty;
 	}
 	
 	@PostMapping(value = "/addProperty")

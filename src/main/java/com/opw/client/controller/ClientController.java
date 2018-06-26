@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opw.client.Client;
+import com.opw.client.model.Client;
 import com.opw.client.dao.ClientDao;
 
 @CrossOrigin(origins = "*")
@@ -41,6 +41,13 @@ public class ClientController {
 		System.out.println("**************"+client.getPhone());
 		System.out.println("**************"+client.getEmail());
 		return clientDao.save(client);
+	}
+	
+	@GetMapping(value = "/getClientNames", produces = "application/json")
+	public String getAllClientNames() {
+		List<Client> listOfClient = clientDao.findClientName();
+		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		return objGson.toJson(listOfClient);
 	}
 
 }

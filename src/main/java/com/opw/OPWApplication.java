@@ -8,4 +8,5 @@ public class OPWApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OPWApplication.class, args);
 	}
+	
 }

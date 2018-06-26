@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.opw.client.Client;
+import com.opw.client.model.Client;
 import com.opw.client.repo.ClientRepo;
 
 @Repository
@@ -25,5 +25,11 @@ public class ClientDao {
 	public Client save(Client client) {
 		return clientRepo.save(client);		
 	}
+	
+	
+	public List<Client> findClientName() {
+		return clientRepo.findClientName();		
+	}
+
 
 }
