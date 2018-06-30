@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Parent Table - VendorType.
  * 
  */
-@Entity
+@Entity()
 @Table(name="VendorTypes")
 @NamedQuery(name="VendorTypes.findAll", query="SELECT v FROM VendorTypes v")
 public class VendorTypes implements Serializable {
@@ -30,6 +30,7 @@ public class VendorTypes implements Serializable {
 	@Column(name="vendortypeId")
 	private Integer vendortypeId;
 	
+	@Column(name="vendorType")
 	private String vendorType;
 
     @OneToMany(cascade = {CascadeType.ALL},mappedBy="vendorType")

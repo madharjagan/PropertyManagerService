@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opw.client.model.Client;
+import com.opw.vendor.vo.Response;
+import com.opw.vendor.vo.VendorResponse;
 import com.opw.client.dao.ClientDao;
 
 @CrossOrigin(origins = "*")
@@ -49,6 +51,25 @@ public class ClientController {
 		List<Client> listOfClient = clientDao.findClientName();
 		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
 		return objGson.toJson(listOfClient);
+	}
+	
+	@GetMapping(value = "/getClientDetails2", produces = "application/json")
+	public Response getAllClientDetails9() {
+		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		List<Client> listOfClient = clientDao.findAll();
+		List<VendorResponse> clientResponse = new ArrayList<>();
+	
+		for(Client temp : listOfClient){
+			VendorResponse clientDet = new VendorResponse();
+			clientDet.setText(temp.getClientname());
+			clientDet.setValue(temp.getClientname());
+			clientResponse.add(clientDet);
+		}
+		//Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+		Response res = new Response();
+		res.setMessage("Success");
+		res.setResult(objGson.toJson(clientResponse));
+		return res;
 	}
 
 }
