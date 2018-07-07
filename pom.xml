@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>PropertyManagerService</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>PropertyManagerService</name>
@@ -63,7 +63,6 @@
 			<optional>true</optional>
 		</dependency>
 		-->
-		
 	</dependencies>
 
 	<build>
