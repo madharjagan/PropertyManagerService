@@ -1,15 +1,17 @@
 package com.opw.client.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
-
-
+import com.opw.property.model.Property;
 
 /**
  * The persistent class for the property database table.
@@ -17,6 +19,7 @@ import javax.persistence.NamedQuery;
  */
 
 @Entity
+@NamedQuery(name="Client.findAll", query="SELECT c FROM Client c")
 public class Client implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -30,6 +33,9 @@ public class Client implements Serializable {
 	private String lastname;
 	private String email;
 	private String phone;
+	
+	@OneToMany(cascade = {CascadeType.ALL},mappedBy="client")
+	private List<Property> property;
 	
 	public int getClientID() {
 		return clientID;
@@ -66,6 +72,18 @@ public class Client implements Serializable {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	/**
+	 * @return the property
+	 */
+	public final List<Property> getProperty() {
+		return property;
+	}
+	/**
+	 * @param property the property to set
+	 */
+	public final void setProperty(List<Property> property) {
+		this.property = property;
 	}
 
 }

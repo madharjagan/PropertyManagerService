@@ -1,37 +1,17 @@
-package com.opw.property.model;
+package com.opw.client.vo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.opw.client.model.Client;
-
 
 
 /**
- * The persistent class for the property database table.
+ * POJO class for property.
  * 
  */
-@Entity
-@NamedQuery(name="Property.findAll", query="SELECT p FROM Property p")
-public class Property implements Serializable {
+public class PropertyVo {
 	
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int propertyID;
-
 	private String street_number;
 	private String route;
 	private String locality;
@@ -47,19 +27,15 @@ public class Property implements Serializable {
 	private int bathroomCount;
 	private String description;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	 @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS") 
 	private Date createDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
 	private Date lastUpdateDate;
 
-	@ManyToOne
-	@JoinColumn(name="clientID", referencedColumnName="clientID")
-    private Client client;
 	
-	public Property() {
+	public PropertyVo() {
 	}
 
 	public int getPropertyID() {
@@ -190,8 +166,5 @@ public class Property implements Serializable {
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 }

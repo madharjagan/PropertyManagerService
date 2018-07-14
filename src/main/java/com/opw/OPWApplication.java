@@ -8,14 +8,4 @@ public class OPWApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OPWApplication.class, args);
 	}
-	
-	/*
-	@Bean
-	public ServletRegistrationBean h2servletRegistration() {
-	    ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
-	    registration.addUrlMappings("/console/*");
-	    return registration;
-	}
-	*/
-	
 }
