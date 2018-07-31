@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.opw.response.Response;
 import com.opw.vendor.dao.VendorDao;
 import com.opw.vendor.model.VendorTypes;
-import com.opw.vendor.vo.VendorResponse;
 import com.opw.vendor.vo.VendorTypeVo;
 
 @CrossOrigin(origins = "*")
@@ -25,11 +25,11 @@ public class VendorController {
 	
 	
 	@GetMapping(value = "/getVendorTypes", produces = "application/json")
-	public  List<VendorResponse> findVendorTypes(){
+	public  List<Response> findVendorTypes(){
 		List<VendorTypes> listOfVendorTypes = vendorDao.findVendorTypes();
-		List<VendorResponse> vendorRes = new ArrayList<>();
+		List<Response> vendorRes = new ArrayList<>();
 		for(VendorTypes temp:listOfVendorTypes){
-			VendorResponse res = new VendorResponse();
+			Response res = new Response();
 			res.setText(temp.getVendorType());
 			res.setValue(temp.getVendorType());
 			vendorRes.add(res);

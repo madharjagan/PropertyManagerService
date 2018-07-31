@@ -1,5 +1,6 @@
 package com.opw.client.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ import com.google.gson.GsonBuilder;
 import com.opw.client.dao.ClientDao;
 import com.opw.client.model.Client;
 import com.opw.client.vo.ClientVo;
+import com.opw.response.Response;
+import com.opw.vendor.model.VendorTypes;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -48,10 +51,16 @@ public class ClientController {
 	}
 	
 	@GetMapping(value = "/getClientNames", produces = "application/json")
-	public String getAllClientNames() {
-		List<Client> listOfClient = clientDao.findClientName();
-		Gson objGson = new GsonBuilder().setPrettyPrinting().create();
-		return objGson.toJson(listOfClient);
+	public List<Response> getAllClientNames() {
+		List<String> listOfClient = clientDao.findClientName();
+		List<Response> clientRes = new ArrayList<>();
+		for(String temp: listOfClient){
+			Response res = new Response();
+			res.setText(temp);
+			res.setValue(temp);
+			clientRes.add(res);
+		}
+		return clientRes;
 	}
 	
 	@GetMapping(value = "/getClientSites", produces = "application/json")

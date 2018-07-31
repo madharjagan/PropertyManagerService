@@ -16,7 +16,7 @@ public interface ClientRepo extends JpaRepository<Client, Integer> {
 	Client findByClientID(int clientID);
 	
 	@Query("select CONCAT(firstname, ' ', lastname) AS FIRSTNAME from Client")
-	List<Client> findClientName();
+	List<String> findClientName();
 	
 	
 	@Query(value="select distinct c from Client c ,Property p  where c.clientID= p.client.clientID and CONCAT(c.firstname, ' ', c.lastname)=?1")

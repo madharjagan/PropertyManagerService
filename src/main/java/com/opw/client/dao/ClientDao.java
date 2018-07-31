@@ -30,7 +30,7 @@ public class ClientDao {
 	}
 	
 	
-	public List<Client> findClientName() {
+	public List<String> findClientName() {
 		return clientRepo.findClientName();		
 	}
 	
@@ -54,6 +54,7 @@ public class ClientDao {
 				propVo.setStreet_number(property.getStreet_number());
 				propVo.setRoute(property.getRoute());
 				propVo.setLocality(property.getLocality());
+				propVo.setCountry(property.getCountry());
 				propertyList.add(propVo);
 			});
 			clientVo.setProperty(propertyList);
